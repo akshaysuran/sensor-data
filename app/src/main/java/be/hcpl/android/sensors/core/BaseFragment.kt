@@ -1,18 +1,15 @@
-package be.hcpl.android.sensors.core;
+package be.hcpl.android.sensors.core
 
-import android.support.v4.app.Fragment;
-
-import be.hcpl.android.sensors.MainActivity;
+import androidx.fragment.app.Fragment
+import be.hcpl.android.sensors.MainActivity
 
 /**
  * A base class for all fragments that will show up in the navigation bar. These all need a
  * properly implemented toString() implementation since we use a default listAdapter implementation
  */
-public class BaseFragment extends Fragment {
-
-    @Override
-    public String toString() {
-        return this.getClass().getSimpleName();
+open class BaseFragment : Fragment() {
+    override fun toString(): String {
+        return this.javaClass.simpleName
     }
 
     /**
@@ -21,7 +18,6 @@ public class BaseFragment extends Fragment {
      *
      * @return the parent activity as a MainActivity instance
      */
-    protected MainActivity getParentActivity(){
-        return (MainActivity)getActivity();
-    }
+    protected val parentActivity: MainActivity?
+        protected get() = activity as MainActivity?
 }
